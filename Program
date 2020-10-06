@@ -1,0 +1,156 @@
+//all on/off
+#include<reg51.h>
+void delay(int time);
+void main(){
+P2=0x00;
+while(1){
+P2=0xFF;
+delay(3000);
+P2=0x00;
+delay(3000);
+}
+}
+void delay(int time){
+unsigned i;
+for(i=0;i<time;i++);
+}
+
+//half on half off
+#include<reg51.h>
+void delay(int time);
+void main()
+{
+P2=0x00;
+while(1){
+P2=0x0F;
+delay(3000);
+P2=0xF0;
+delay(3000);
+}
+}
+void delay(int time){
+unsigned i;
+for(i=0;i<time;i++);
+}
+
+//alternate On Off
+#include<reg51.h>
+void delay(int time);
+void main(){
+P2=0x00;
+while(1){
+P2=0x55;
+delay(3000);
+P2=0xAA;
+delay(3000);
+}
+}
+void delay(int time){
+unsigned i;
+for(i=0;i<time;i++);
+}
+
+//left shift
+#include<reg51.h>
+void delay(int time);
+void main(){
+unsigned int num=0xFF;
+count=0;
+while(count%8==0){
+count=count+1;
+P1=num;delay(30000);
+num=(num<<1);
+}
+}
+void delay(int time)
+{
+unsigned i;
+for(i=0;i<time;i++);
+}
+
+//right shift
+#include<reg51.h>
+void delay(int time);
+void main(){
+unsigned int num=0x80;
+int i=1;
+while(i<=8){
+   P1=num;
+   delay(30000);
+   num=num>>1;
+   ++i;
+}
+}
+void delay(int time)
+{
+unsigned i;
+for(i=0;i<time;i++);
+}
+
+//converging diverging
+#include<reg51.h>
+void delay(int time);
+void main(){
+P1=0x00;
+while(1){
+//converging
+P1=0x81;delay(3000);
+P1=0x42;delay(3000);
+P1=0x24;delay(3000);
+P1=0x18;delay(3000);
+//diverging
+P1=0x18;delay(3000);
+P1=0x24;delay(3000);
+P1=0x42;delay(3000);
+P1=0x81;delay(3000);
+}
+}
+void delay(int time){
+unsigned i;
+for(i=0;i<time;i++);
+}
+
+//convergence and divergence
+#include<reg51.h>
+void delay(int time);
+void main(){
+unsigned int num=0x80;
+unsigned int num1=0x01;
+int i=1;
+while(i<=4){
+	P2=num+num1;
+	num=num>>1;
+	num1=num1<<1;
+	++i;	
+}
+i=0;
+while(i<=4){
+	P2=num+num1;
+	num=num<<1;
+	num1=num1>>1;
+	++i;
+}
+void delay(int time){
+unsigned int j;
+for(j=0;j<time;j++);
+}
+//curtain
+#include<reg51.h>
+void delay(int time);
+void main(){
+P1=0x00;
+while(1){
+P1=0x80;delay(3000);
+P1=0xC0;delay(3000);
+P1=0xE0;delay(3000);
+P1=0xF0;delay(3000);
+P1=0xF8;delay(3000);
+P1=0xFC;delay(3000);
+P1=0xFE;delay(3000);
+P1=0xFF;delay(3000);
+}
+}
+void delay(int time){
+unsigned i;
+for(i=0;i<time;i++);
+}
